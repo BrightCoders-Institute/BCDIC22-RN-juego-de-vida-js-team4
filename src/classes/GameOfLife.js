@@ -7,11 +7,11 @@ module.exports = class GameOfLife {
     this.nextGeneration;
   }
 
-  createInitialGrid({ rows, cols }) {
+  createInitialGrid() {
     const grid = [];
-    for (let row = 0; row < rows; row++) {
+    for (let row = 0; row < this.rows; row++) {
       let gridRows = [];
-      for (let col = 0; col < cols; col++) {
+      for (let col = 0; col < this.cols; col++) {
         if (Math.floor(Math.random() * (7 - 0 + 1)) + 0 == 0) {
           gridRows.push(1);
         } else {
@@ -23,13 +23,13 @@ module.exports = class GameOfLife {
     return grid;
   }
 
-  printGrid({ rows, cols, grid, generation }) {
+  printGrid() {
     console.clear();
     let finalString = '';
-    finalString += `Generation: ${generation}\n\r`;
-    for (let row = 0; row < rows; row++) {
-      for (let col = 0; col < cols; col++) {
-        if (grid[row][col] == 0) {
+    finalString += `Generation: ${this.generation}\n\r`;
+    for (let row = 0; row < this.rows; row++) {
+      for (let col = 0; col < this.cols; col++) {
+        if (this.currentGeneration[row][col] == 0) {
           finalString += '. ';
         } else {
           finalString += '* ';
@@ -40,39 +40,39 @@ module.exports = class GameOfLife {
     console.log(finalString);
   }
 
-  createNextGrid({ rows, cols, grid, nextGrid }) {
-    for (let row = 0; row < rows; row++) {
-      for (let col = 0; col < cols; col++) {
-        let livingNeighbours = this.getLivingNeighbors({ row, col, rows, cols, grid });
+  createNextGrid() {
+    for (let row = 0; row < this.rows; row++) {
+      for (let col = 0; col < this.cols; col++) {
+        let livingNeighbours = this.getLivingNeighbors({ row, col });
         if (livingNeighbours < 2 || livingNeighbours > 3) {
-          nextGrid[row][col] = 0;
-        } else if (livingNeighbours == 3 && grid[row][col] == 0) {
-          nextGrid[row][col] = 1;
+          this.nextGeneration[row][col] = 0;
+        } else if (livingNeighbours == 3 && this.currentGeneration[row][col] == 0) {
+          this.nextGeneration[row][col] = 1;
           a;
         } else {
-          nextGrid[row][col] = grid[row][col];
+          this.nextGeneration[row][col] = this.currentGeneration[row][col];
         }
       }
     }
   }
 
-  getLivingNeighbors({ row, col, rows, cols, grid }) {
+  getLivingNeighbors({ row, col }) {
     let life = 0;
     for (let i = -1; i < 2; i++) {
       for (let j = -1; j < 2; j++) {
         if (!(i == 0 && j == 0)) {
           //life += grid[(row + i) % rows][(col + j) % cols];
-          life += grid.at((row + i) % rows).at((col + j) % cols);
+          life += this.currentGeneration.at((row + i) % this.rows).at((col + j) % this.cols);
         }
       }
     }
     return life;
   }
 
-  gridChanging({ rows, cols, grid, nextGrid }) {
-    for (let row = 0; row < rows; row++) {
-      for (let col = 0; col < cols; col++) {
-        if (!(grid[row][col] == nextGrid[row][col])) {
+  gridChanging() {
+    for (let row = 0; row < this.rows; row++) {
+      for (let col = 0; col < this.cols; col++) {
+        if (!(this.currentGeneration[row][col] == this.nextGeneration[row][col])) {
           return true;
         }
       }
@@ -80,22 +80,22 @@ module.exports = class GameOfLife {
     return false;
   }
 
-  getIntegerValue({ prompt, low, high }) {
-    let value;
-    while (true) {
-      try {
-        value = Number(prompt);
-      } catch (e) {
-        console.log('Please enter a valid input number');
-      }
-      if (value < low || value > high) {
-        console.log(`Input was not inside the bounds, please enter a number between ${low} and ${high}`);
-      } else {
-        break;
-      }
-    }
-    return value;
-  }
+  // getIntegerValue({ prompt, low, high }) {
+  //   let value;
+  //   while (true) {
+  //     try {
+  //       value = Number(prompt);
+  //     } catch (e) {
+  //       console.log('Please enter a valid input number');
+  //     }
+  //     if (value < low || value > high) {
+  //       console.log(`Input was not inside the bounds, please enter a number between ${low} and ${high}`);
+  //     } else {
+  //       break;
+  //     }
+  //   }
+  //   return value;
+  // }
 
   start() {
     console.log('Game of Life started');
