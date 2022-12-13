@@ -4,7 +4,8 @@
   "description": "![BrightCoders Logo](img/logo.png)",
   "main": "./src/main.js",
   "scripts": {
-    "dev": "nodemon ./src/main.js",
+    "dev:start": "node ./src/main.js 4 4",
+    "dev:watch": "nodemon ./src/main.js",
     "start": "node ./src/main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
