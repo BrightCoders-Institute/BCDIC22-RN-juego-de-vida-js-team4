@@ -1,31 +1,59 @@
 {
-  "version": "0.2.0",
-  "compounds": [
-    {
-      "name": "Debug",
-      "configurations": ["Launch"]
-    },
-    {
-      "name": "Build & Debug",
-      "configurations": ["Launch"],
-      "preLaunchTask": "Build"
-    },
-    {
-      "name": "Install, Build & Debug",
-      "configurations": ["Launch"],
-      "preLaunchTask": "Install & Build"
-    }
-  ],
-  "configurations": [
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Launch",
-      "cwd": "${workspaceRoot}",
-      "runtimeExecutable": "npm",
-      "program": "${workspaceFolder}/src/index.ts",
-      "outFiles": ["${workspaceFolder}/build/**/*.js"],
-      "runtimeArgs": ["run", "dev:start"]
-    }
-  ]
+	"version": "0.2.0",
+	"compounds": [
+		{
+			"name": "Debug (Debugger console)",
+			"configurations": ["Launch (Debugger console)"]
+		},
+		{
+			"name": "Debug (Terminal)",
+			"configurations": ["Launch (Terminal)"]
+		},
+		{
+			"name": "Build & Debug (Debugger console)",
+			"configurations": ["Launch (Debugger console)"],
+			"preLaunchTask": "Build"
+		},
+		{
+			"name": "Build & Debug (Terminal)",
+			"configurations": ["Launch (Terminal)"],
+			"preLaunchTask": "Build"
+		},
+		{
+			"name": "Install, Build & Debug (Debugger console)",
+			"configurations": ["Launch (Debugger console)"],
+			"preLaunchTask": "Install & Build"
+		},
+		{
+			"name": "Install, Build & Debug (Terminal)",
+			"configurations": ["Launch (Terminal)"],
+			"preLaunchTask": "Install & Build"
+		}
+	],
+	"configurations": [
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Launch (Debugger console)",
+			"cwd": "${workspaceRoot}",
+			"outputCapture": "std",
+			"console": "internalConsole",
+			"runtimeExecutable": "npm",
+			// "program": "${workspaceFolder}/src/index.ts",
+			// "outFiles": ["${workspaceFolder}/build/**/*.js"],
+			"runtimeArgs": ["run", "dev"]
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Launch (Terminal)",
+			"cwd": "${workspaceRoot}",
+			"outputCapture": "std",
+			"console": "integratedTerminal",
+			"runtimeExecutable": "npm",
+			// "program": "${workspaceFolder}/src/index.ts",
+			// "outFiles": ["${workspaceFolder}/build/**/*.js"],
+			"runtimeArgs": ["run", "dev"]
+		}
+	]
 }

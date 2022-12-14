@@ -1,26 +1,26 @@
 {
-  "name": "bcdic22-rn-juego-de-vida-js-team4",
-  "version": "1.0.0",
-  "description": "![BrightCoders Logo](img/logo.png)",
-  "main": "./src/main.js",
-  "scripts": {
-    "dev:start": "node ./src/main.js 4 4",
-    "dev:watch": "nodemon ./src/main.js",
-    "start": "node ./src/main.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/BrightCoders-Institute/BCDIC22-RN-juego-de-vida-js-team4.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/BrightCoders-Institute/BCDIC22-RN-juego-de-vida-js-team4/issues"
-  },
-  "homepage": "https://github.com/BrightCoders-Institute/BCDIC22-RN-juego-de-vida-js-team4#readme",
-  "devDependencies": {
-    "eslint": "^8.29.0"
-  }
+	"name": "bcdic22-rn-juego-de-vida-js-team4",
+	"version": "1.0.0",
+	"description": "![BrightCoders Logo](img/logo.png)",
+	"main": "./src/main.js",
+	"scripts": {
+		"dev": "npx nodemon ./src/main.js 10 10 10 10",
+		"start": "node ./src/main.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/BrightCoders-Institute/BCDIC22-RN-juego-de-vida-js-team4.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/BrightCoders-Institute/BCDIC22-RN-juego-de-vida-js-team4/issues"
+	},
+	"homepage": "https://github.com/BrightCoders-Institute/BCDIC22-RN-juego-de-vida-js-team4#readme",
+	"devDependencies": {
+		"eslint": "^8.29.0",
+		"nodemon": "^2.0.20"
+	}
 }
