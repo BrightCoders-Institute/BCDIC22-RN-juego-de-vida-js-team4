@@ -9,4 +9,3 @@ const aliveChanceOnSpawn = Number(args[4]);
 
 const board = new Board({ cols, generations, fps, rows, aliveChanceOnSpawn });
 board.start();
-return;
