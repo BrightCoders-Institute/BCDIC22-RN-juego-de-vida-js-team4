@@ -1,15 +1,21 @@
-const Cell = require('./Cell.js');
+import Cell from './Cell.js';
+import { IBoardConstructor, IBoardDraw, IBoardUpdateCells } from '../interfaces/Board.js';
 
-module.exports = class Board {
-	constructor({ aliveChanceOnSpawn, cols, fps, generations, rows }) {
+export default class Board {
+	public aliveChanceOnSpawn: number;
+	public cols: number;
+	public fps: number;
+	public generations: number;
+	public rows: number;
+	constructor({ aliveChanceOnSpawn, cols, fps, generations, rows }: IBoardConstructor) {
 		this.aliveChanceOnSpawn = aliveChanceOnSpawn || 0.5;
 		this.cols = cols || 10;
 		this.fps = fps || 10;
-		this.generations = generations > 0 ? generations : Infinity;
+		this.generations = generations && generations > 0 ? Math.abs(generations) : Infinity;
 		this.rows = rows || 10;
 	}
 
-	draw({ cells, generation }) {
+	private draw({ cells, generation }: IBoardDraw): void {
 		console.clear();
 		console.log(
 			`Table: ${this.cols}x${this.rows} | FPS: ${this.fps} | Living chance: ${this.aliveChanceOnSpawn * 100}%`
@@ -26,11 +32,11 @@ module.exports = class Board {
 		process.stdout.write('\n');
 	}
 
-	updateCells({ cells }) {
+	private updateCells({ cells }: IBoardUpdateCells): void {
 		for (let i = 0; i < this.cols; i++) {
 			for (let j = 0; j < this.rows; j++) {
 				cells[i][j].neighbors = 0;
-				let offsets = [
+				const offsets = [
 					[1, 0],
 					[1, 1],
 					[1, -1],
@@ -40,9 +46,10 @@ module.exports = class Board {
 					[-1, 1],
 					[-1, -1],
 				];
-				for (let n in offsets) {
+				for (const n in offsets) {
 					try {
-						cells[i][j].neighbors += cells[i + offsets[n][0]][j + offsets[n][1]].alive;
+						if (cells[i + offsets[n][0]][j + offsets[n][1]].alive) cells[i][j].neighbors++;
+						//cells[i][j].neighbors += Number(cells[i + offsets[n][0]][j + offsets[n][1]].alive);
 					} catch (e) {}
 				}
 			}
@@ -52,19 +59,19 @@ module.exports = class Board {
 		}
 	}
 
-	async start() {
-		let cells = [];
+	public async start(): Promise<void> {
+		const cells = [];
 		for (let i = 0; i < this.cols; i++) {
-			let cellColumn = [];
+			const cellColumn = [];
 			for (let j = 0; j < this.rows; j++) cellColumn.push(new Cell({ aliveChanceOnSpawn: this.aliveChanceOnSpawn }));
 			cells.push(cellColumn);
 		}
 		for (let i = 0; i <= this.generations; i++) {
-			let init = performance.now();
+			const init = performance.now();
 			this.draw({ cells, generation: i });
 			this.updateCells({ cells });
-			let sleepTime = 1000 / this.fps - (performance.now() - init);
+			const sleepTime = 1000 / this.fps - (performance.now() - init);
 			await new Promise((r) => setTimeout(r, sleepTime > 0 ? sleepTime : 0));
 		}
 	}
-};
+}
