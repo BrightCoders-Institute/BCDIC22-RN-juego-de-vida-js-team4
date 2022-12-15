@@ -10,16 +10,16 @@
   - [Requerimientos funcionales](#requerimientos-funcionales)
     - [Clues](#clues)
   - [Recursos](#recursos)
-  
+
 # El Juego de la vida
 
-  Atributo |  Valor
- --- | --- |
- Tipo | Colaborativo
- Estrategia | Mob Programming
- Modo | Síncrono
- Dedicación | 12 horas
- Duración | 4 días
+| Atributo   | Valor           |
+| ---------- | --------------- |
+| Tipo       | Colaborativo    |
+| Estrategia | Mob Programming |
+| Modo       | Síncrono        |
+| Dedicación | 12 horas        |
+| Duración   | 4 días          |
 
 ## Objetivos
 
@@ -101,7 +101,9 @@ You start with a two dimensional grid of cells, where each cell is either alive 
 You should write a program that can accept an arbitrary grid of cells, and will output a similar grid showing the next generation.
 
 ### Clues
+
 The input starting position could be a text file that looks like this:
+
 ```
 Generation 1:
 4 8
@@ -110,7 +112,9 @@ Generation 1:
 ...**...
 ........
 ```
+
 And the output could look like this:
+
 ```
 Generation 2:
 4 8
@@ -119,6 +123,7 @@ Generation 2:
 ...**...
 ........
 ```
+
 ## Recursos
 
 - Javascript
@@ -135,11 +140,11 @@ Generation 2:
 - ESLINT
   - [Documentación](https://eslint.org/)
 - Desarrollo basado en pruebas
-  - [The Absolute Beginner’s Guide to Test Driven Development, with a Practical Example](https://medium.com/@bethqiang/the-absolute-beginners-guide-to-test-driven-development-with-a-practical-example-c39e73a11631) 
+  - [The Absolute Beginner’s Guide to Test Driven Development, with a Practical Example](https://medium.com/@bethqiang/the-absolute-beginners-guide-to-test-driven-development-with-a-practical-example-c39e73a11631)
   - [Learn Test Driven Development (TDD)](https://github.com/dwyl/learn-tdd)
   - [Fundamentals of TDD](https://thoughtbot.com/upcase/fundamentals-of-tdd)
   - [Getting Started](https://jestjs.io/docs/en/getting-started)
-  - [Getting Started With Jest](https://www.valentinog.com/blog/jest/) 
+  - [Getting Started With Jest](https://www.valentinog.com/blog/jest/)
   - [Testing JavaScript with Jest](https://flaviocopes.com/jest/)
 - Analizadores de código estático
   - [CodeClimate](https://codeclimate.com/)

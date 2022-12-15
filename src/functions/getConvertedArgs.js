@@ -5,6 +5,6 @@ module.exports = function getConvertedArgs() {
 		cols: Number(args[1] || 10),
 		fps: Number(args[3] || 10),
 		generations: Number(args[2]) > 0 ? Number(args[2]) : Infinity,
-		rows: Number(args[0] || 10)
+		rows: Number(args[0] || 10),
 	};
 };
