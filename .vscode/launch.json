@@ -2,39 +2,21 @@
 	"version": "0.2.0",
 	"compounds": [
 		{
-			"name": "Debug (Debugger console)",
-			"configurations": ["Launch (Debugger console)"]
+			"name": "Install &  Debug (Debugger console)",
+			"configurations": ["Debug (Debugger console)"],
+			"preLaunchTask": "Install"
 		},
 		{
-			"name": "Debug (Terminal)",
-			"configurations": ["Launch (Terminal)"]
-		},
-		{
-			"name": "Build & Debug (Debugger console)",
-			"configurations": ["Launch (Debugger console)"],
-			"preLaunchTask": "Build"
-		},
-		{
-			"name": "Build & Debug (Terminal)",
-			"configurations": ["Launch (Terminal)"],
-			"preLaunchTask": "Build"
-		},
-		{
-			"name": "Install, Build & Debug (Debugger console)",
-			"configurations": ["Launch (Debugger console)"],
-			"preLaunchTask": "Install & Build"
-		},
-		{
-			"name": "Install, Build & Debug (Terminal)",
-			"configurations": ["Launch (Terminal)"],
-			"preLaunchTask": "Install & Build"
+			"name": "Install & Debug (Terminal)",
+			"configurations": ["Debug (Terminal)"],
+			"preLaunchTask": "Install"
 		}
 	],
 	"configurations": [
 		{
 			"type": "node",
 			"request": "launch",
-			"name": "Launch (Debugger console)",
+			"name": "Debug (Debugger console)",
 			"cwd": "${workspaceRoot}",
 			"outputCapture": "std",
 			"console": "internalConsole",
@@ -46,7 +28,7 @@
 		{
 			"type": "node",
 			"request": "launch",
-			"name": "Launch (Terminal)",
+			"name": "Debug (Terminal)",
 			"cwd": "${workspaceRoot}",
 			"outputCapture": "std",
 			"console": "integratedTerminal",
