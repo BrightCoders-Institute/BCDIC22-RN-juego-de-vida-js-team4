@@ -3,10 +3,10 @@ const Cell = require('./Cell.js');
 module.exports = class Board {
 	constructor({ aliveChanceOnSpawn, cols, fps, generations, rows }) {
 		this.aliveChanceOnSpawn = aliveChanceOnSpawn || 0.5;
-		this.cols = cols || 10;
-		this.fps = fps || 10;
-		this.generations = generations > 0 ? generations : Infinity;
-		this.rows = rows || 10;
+		this.cols = cols;
+		this.fps = fps;
+		this.generations = generations;
+		this.rows = rows;
 	}
 
 	draw({ cells, generation }) {
@@ -43,7 +43,7 @@ module.exports = class Board {
 				for (let n in offsets) {
 					try {
 						cells[i][j].neighbors += cells[i + offsets[n][0]][j + offsets[n][1]].alive;
-					} catch (e) {}
+					} catch (e) { }
 				}
 			}
 		}
