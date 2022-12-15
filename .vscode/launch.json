@@ -2,31 +2,23 @@
 	"version": "0.2.0",
 	"compounds": [
 		{
-			"name": "Debug (Debugger console)",
-			"configurations": ["Launch (Debugger console)"]
-		},
-		{
-			"name": "Debug (Terminal)",
-			"configurations": ["Launch (Terminal)"]
-		},
-		{
 			"name": "Build & Debug (Debugger console)",
-			"configurations": ["Launch (Debugger console)"],
+			"configurations": ["Debug (Debugger console)"],
 			"preLaunchTask": "Build"
 		},
 		{
 			"name": "Build & Debug (Terminal)",
-			"configurations": ["Launch (Terminal)"],
+			"configurations": ["Debug (Terminal)"],
 			"preLaunchTask": "Build"
 		},
 		{
 			"name": "Install, Build & Debug (Debugger console)",
-			"configurations": ["Launch (Debugger console)"],
+			"configurations": ["Debug (Debugger console)"],
 			"preLaunchTask": "Install & Build"
 		},
 		{
 			"name": "Install, Build & Debug (Terminal)",
-			"configurations": ["Launch (Terminal)"],
+			"configurations": ["Debug (Terminal)"],
 			"preLaunchTask": "Install & Build"
 		}
 	],
@@ -34,25 +26,25 @@
 		{
 			"type": "node",
 			"request": "launch",
-			"name": "Launch (Debugger console)",
+			"name": "Debug (Debugger console)",
 			"cwd": "${workspaceRoot}",
 			"outputCapture": "std",
 			"console": "internalConsole",
 			"runtimeExecutable": "npm",
-			"program": "${workspaceFolder}/src/main.ts",
-			"outFiles": ["${workspaceFolder}/build/**/*.js"],
+			//"program": "${workspaceFolder}/src/main.ts",
+			//"outFiles": ["${workspaceFolder}/build/**/*.js"],
 			"runtimeArgs": ["run", "dev"]
 		},
 		{
 			"type": "node",
 			"request": "launch",
-			"name": "Launch (Terminal)",
+			"name": "Debug (Terminal)",
 			"cwd": "${workspaceRoot}",
 			"outputCapture": "std",
 			"console": "integratedTerminal",
 			"runtimeExecutable": "npm",
-			"program": "${workspaceFolder}/src/main.ts",
-			"outFiles": ["${workspaceFolder}/build/**/*.js"],
+			//"program": "${workspaceFolder}/src/main.ts",
+			//"outFiles": ["${workspaceFolder}/build/**/*.js"],
 			"runtimeArgs": ["run", "dev"]
 		}
 	]
