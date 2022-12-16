@@ -16,4 +16,16 @@ describe('Board', () => {
 			})
 		);
 	});
+	it('should contain the correct number of cols', async () => {
+		const board = new Board({ aliveChanceOnSpawn: 0.5, cols: 20, fps: 10, generations: 1, rows: 10 });
+		await board.start({});
+		expect(board.cells.length).toBe(board.cols);
+	});
+	it('should contain the correct number of rows', async () => {
+		const board = new Board({ aliveChanceOnSpawn: 0.5, cols: 20, fps: 10, generations: 1, rows: 10 });
+		await board.start({});
+		for (let row of board.cells) {
+			expect(row.length).toBe(board.rows);
+		}
+	});
 });
